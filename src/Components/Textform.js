@@ -7,46 +7,52 @@ export default function Textform(props) {
         // console.log("Upercase is Clicked")
         let newText = text.toUpperCase();
         setText(newText);
+        props.showAlert("Converted to Uppercase!" , "success")
     }
-
-
+    
+    
     const handleDownClick = () => {
         // console.log("LowerCase is Clicked")
         let newText = text.toLowerCase();
         setText(newText);
+        props.showAlert("Converted to Lowercase!" , "success")
     }
-
+    
     const handleClearClick = () => {
         // console.log("Clear is Clicked")
         let newText = "";
         setText(newText);
+        props.showAlert("Your text has been cleared!" , "success")
     }
-
+    
     const handleSpeak = () => {
         let msg = new SpeechSynthesisUtterance();
         msg.text = text;
         window.speechSynthesis.speak(msg);
+        props.showAlert("Audio Started!" , "success")
     }
-
+    
     const reverseText = () => {
         let newText = text.split("").reverse().join("");
         setText(newText)
+        props.showAlert("Text has been reversed!" , "success")
     }
-
-
+    
+    
     const handleCapitalizeonClick = () => {
         let camelCaseText = text
-            .split(' ')
-            .map(function (word, index) {
-                // First character upper case else lower case
-                return word.charAt(0)
-                    .toUpperCase() + word.slice(1)
-                        .toLowerCase();
-            })
-            .join(' ');
+        .split(' ')
+        .map(function (word, index) {
+            // First character upper case else lower case
+            return word.charAt(0)
+            .toUpperCase() + word.slice(1)
+            .toLowerCase();
+        })
+        .join(' ');
         setText(camelCaseText);
+        props.showAlert("Text has been Capitalized!" , "success")
     }
-
+    
     const handleExtraSpaces = () => {
         let words = text.split(' ');
         let joinedWords = '';
@@ -58,21 +64,23 @@ export default function Textform(props) {
             }
         })
         setText(joinedWords);
+        props.showAlert("Extra Spaces has been removed!" , "success")
     }
-
+    
     const handleCopy = () => {
         console.log("I am copy");
         var text = document.getElementById("mybox");
         text.select();
         navigator.clipboard.writeText(text.value);
+        props.showAlert("Text has been copied to your clipboard!" , "success")
     }
-
+    
     const handleOnChange = (event) => {
         // console.log("handleOnChange")
         setText(event.target.value);
     }
-
-
+    
+    
     const [text, setText] = useState("");
     // text = "Helloo" Wrong way to change state
     // setText("Hello"); Correct way change state
@@ -96,7 +104,7 @@ export default function Textform(props) {
             </div>
             <div className="container my-3">
                 <h2>Your Text Summary</h2>
-                <p>{text.split(" ").length} Words, {text.length} characters</p>
+                <p>{text.trim() === '' ? 0 : text.match(/\S+/g).length} words and {text.replace(/\s+/g, '').length} characters</p>
                 <p>{0.008 * text.split(" ").length} Mintues Read</p>
                 <h2>Preview</h2>
                 <p>{text}</p>
