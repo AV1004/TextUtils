@@ -33,10 +33,6 @@ export default function Textform(props) {
         setText(newText)
     }
 
-    const handleOnChange = (event) => {
-        // console.log("handleOnChange")
-        setText(event.target.value);
-    }
 
     const handleCapitalizeonClick = () => {
         let camelCaseText = text
@@ -71,6 +67,12 @@ export default function Textform(props) {
         navigator.clipboard.writeText(text.value);
     }
 
+    const handleOnChange = (event) => {
+        // console.log("handleOnChange")
+        setText(event.target.value);
+    }
+
+
     const [text, setText] = useState("");
     // text = "Helloo" Wrong way to change state
     // setText("Hello"); Correct way change state
@@ -81,16 +83,16 @@ export default function Textform(props) {
             <div className="container">
                 <h1>{props.heading}</h1>
                 <div className="mb-3">
-                    <textarea className="form-control" placeholder='Enter text here' value={text} onChange={handleOnChange} id="mybox" rows="8"></textarea>
+                    <textarea className="form-control" style={{ backgroundColor: props.mode === 'dark' ? '#61677A' : 'white', color: props.mode === 'dark' ? '#FFF6E0' : 'black' }} value={text} onChange={handleOnChange} id="mybox" rows="8"></textarea>
                 </div>
-                <button className="btn btn-dark mx-2" onClick={handleUpClick} >to Uppercase</button>
-                <button className="btn btn-dark mx-2" onClick={handleDownClick} >to Lowercase</button>
-                <button className="btn btn-dark mx-2" onClick={handleDownClick} >to Lowercase</button>
-                <button className="btn btn-dark mx-2" onClick={handleCopy} >Copy</button>
-                <button className="btn btn-dark mx-2" onClick={handleExtraSpaces} >Remove Extra Spaces</button>
-                <button className="btn btn-dark mx-2" onClick={reverseText} >ReverseText</button>
-                <button className="btn btn-dark mx-2" onClick={handleSpeak} >to Speak</button>
-                <button className="btn btn-dark mx-2" onClick={handleClearClick} >Clear Text</button>
+                <button className="btn btn-dark mx-2" style={{ backgroundColor: props.mode === 'dark' ? '#61677A' : 'black', color: props.mode === 'dark' ? '#FFF6E0' : 'white', border:'none' }} onClick={handleUpClick} >to Uppercase</button>
+                <button className="btn btn-dark mx-2" style={{ backgroundColor: props.mode === 'dark' ? '#61677A' : 'black', color: props.mode === 'dark' ? '#FFF6E0' : 'white', border:'none' }} onClick={handleDownClick} >to Lowercase</button>
+                <button className="btn btn-dark mx-2" style={{ backgroundColor: props.mode === 'dark' ? '#61677A' : 'black', color: props.mode === 'dark' ? '#FFF6E0' : 'white', border:'none' }} onClick={handleCopy} >Copy</button>
+                <button className="btn btn-dark mx-2" style={{ backgroundColor: props.mode === 'dark' ? '#61677A' : 'black', color: props.mode === 'dark' ? '#FFF6E0' : 'white', border:'none' }} onClick={handleExtraSpaces} >Remove Extra Spaces</button>
+                <button className="btn btn-dark mx-2" style={{ backgroundColor: props.mode === 'dark' ? '#61677A' : 'black', color: props.mode === 'dark' ? '#FFF6E0' : 'white', border:'none' }} onClick={reverseText} >ReverseText</button>
+                <button className="btn btn-dark mx-2" style={{ backgroundColor: props.mode === 'dark' ? '#61677A' : 'black', color: props.mode === 'dark' ? '#FFF6E0' : 'white', border:'none' }} onClick={handleCapitalizeonClick} >Capitalization</button>
+                <button className="btn btn-dark mx-2" style={{ backgroundColor: props.mode === 'dark' ? '#61677A' : 'black', color: props.mode === 'dark' ? '#FFF6E0' : 'white', border:'none' }} onClick={handleSpeak} >to Speak</button>
+                <button className="btn btn-dark mx-2" style={{ backgroundColor: props.mode === 'dark' ? '#61677A' : 'black', color: props.mode === 'dark' ? '#FFF6E0' : 'white', border:'none' }} onClick={handleClearClick} >Clear Text</button>
             </div>
             <div className="container my-3">
                 <h2>Your Text Summary</h2>
