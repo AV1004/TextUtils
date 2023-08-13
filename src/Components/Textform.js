@@ -133,7 +133,7 @@ export default function Textform(props) {
                 <p>{text.trim() === '' ? 0 : text.match(/\S+/g).length} words and {text.replace(/\s+/g, '').length} characters</p>
                 <p>{text.trim() === '' ? 0 : 0.008 * text.match(/\S+/g).length} Mintues Read</p>
                 <h2>Preview</h2>
-                <p>{text}</p>
+                <p>{text==="" ? "Enter Something in Textbox to Preview it here!":text}</p>
             </div>
         </>
     )

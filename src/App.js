@@ -4,6 +4,13 @@ import './App.css';
 import Navbar from './Components/Navbar';
 import Textform from './Components/Textform';
 import Alert from './Components/Alert';
+// import {
+//   BrowserRouter as Router,
+//   Routes,
+//   Route,
+//   Link
+// } from "react-router-dom";
+
 
 
 function App() {
@@ -141,6 +148,7 @@ function App() {
 
   return (
     <>
+      {/* <Router> */}
       {/* <Navbar title="Textutils" aboutText="About Textutils" /> */}
       {/* <Navbar/> */}
 
@@ -159,9 +167,16 @@ function App() {
 
         {/* Themes Here! */}
         <Textform heading="Enter the text to anlayze" showAlert={showAlert} ChangeTheme={ChangeTheme} BGColor={BGColor} TextColor={TextColor} />
-        {/* <About/> */}
+        {/* <About /> */}
+
+        {/* <Routes>
+            <Route exact path="/about" element={<About />} />
+            <Route exact path="/" element={<Textform heading="Enter the text to anlayze" showAlert={showAlert} ChangeTheme={ChangeTheme} BGColor={BGColor} TextColor={TextColor} />} />
+
+          </Routes> */}
 
       </div>
+      {/* </Router> */}
     </>
   );
 }
